@@ -1,0 +1,67 @@
+<div class="date-picker" (click)='openModel()'>
+  <div class="date-picker-day">{{value | date : 'dd'}}</div>
+  <div class="date-picker-my">
+    <div class="date-picker-month">
+      {{value | date : 'MMM'}}
+    </div>
+    <div class="date-picker-year">
+      {{value | date : 'yyyy'}}
+    </div>
+  </div>
+</div>
+<div class="model-date-picker" [class.open]="model_open">
+  <div class="model-date-picker-content">
+    <div class="model-date-picker-header">
+      <div class="model-date-picker-year">
+        <button class="btn btn-primary btn-control" (click)="changeYear(-1)">
+          <i class="material-icons">chevron_left</i>
+        </button>
+        <span class="year-input">
+          <input type="number" class="input-number"
+            [min]="min_date | date : 'yyyy'"
+            [max]="max_date | date : 'yyyy'"
+            [value]="value | date : 'yyyy'"
+            (change)="yearChange($event)"/>
+        </span>
+        <button class="btn btn-primary btn-control" (click)="changeYear(1)">
+          <i class="material-icons">chevron_right</i>
+        </button>
+      </div>
+
+      <div class="model-date-picker-month">
+        <button class="btn btn-primary btn-control" (click)="changeMonth(-1)">
+          <i class="material-icons">chevron_left</i>
+        </button>
+        <span class="year-input">
+          <input type="text" readonly class="input-txt" [value]="value | date : 'MMMM'"/>
+        </span>
+        <button class="btn btn-primary btn-control" (click)="changeMonth(1)">
+          <i class="material-icons">chevron_right</i>
+        </button>
+      </div>
+    </div>
+    <div class="model-date-picker-body">
+      <div class="model-date-picker-day-heads">
+        <span class="model-date-picker-days" *ngFor="let day of days">{{day}}</span>
+      </div>
+
+      <div class="model-date-picker-dates">
+        <span class="model-date-picker-date null" *ngFor="let date of range(0,start_day)">
+        </span>
+        <button class="model-date-picker-date null" *ngFor="let date of ddates" disabled>
+          {{date}}
+        </button>
+        <button class="model-date-picker-date"
+          [class.active]="date == getSelectedDate()"
+          *ngFor="let date of cdates"
+          (click)="selectDate(date)">
+          {{date}}
+        </button>
+
+      </div>
+    </div>
+    <div class="model-date-picker-footer">
+      <button class="btn btn-primary" (click)="closeModel()">Select</button>
+    </div>
+  </div>
+</div>

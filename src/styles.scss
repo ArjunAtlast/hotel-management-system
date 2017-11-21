@@ -1,0 +1,218 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+@import './app/variables.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  color: $text-color;
+}
+
+input, button, [tabindex] {
+  font-family: 'Roboto', sans-serif;
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+
+/***********
+**  FORM  **
+************/
+
+.card {
+  .card-header {
+    position: relative;
+    z-index: 1;
+
+    .floating-button {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      color: color($colors, light);
+      border: 2px solid color($colors, light);
+      border-radius: 50rem;
+      cursor: pointer;
+      transition: background 0.5s ease-in-out;
+      text-decoration: none;
+
+      &:hover {
+        background: color($colors, light);
+
+        .material-icons {
+          transform: rotate(360deg);
+          color: color($colors, primary);
+          border-color: color($colors, primary);
+        }
+
+        .flt-text {
+          color: color($colors, primary);
+        }
+      }
+
+      .material-icons {
+        padding: 4px;
+        border: 4px solid transparent;
+        border-radius: 50rem;
+        transition: all 0.5s ease-in-out;
+      }
+      .flt-text {
+        font-size: 0.9rem;
+        font-weight: 300;
+        padding: 8px;
+        padding-right: 16px;
+        font-stretch: ultra-expanded;
+      }
+    }
+  }
+
+  div.card-body {
+    position: relative;
+    z-index: 5;
+  }
+}
+
+form.custom-form {
+  padding: 16px;
+  //min-height: 200px;
+  background: white;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation-duration: 0.5s;
+  @include elevation(2px);
+
+  h4.form-heading {
+    text-align: center;
+    font-weight: 300;
+    font-size: 1.1rem;
+    vertical-align: middle;
+    color: color($colors, primary);
+    &::after {
+      content: "";
+      display: block;
+      width: 25px;
+      height: 1px;
+      background: color($colors, primary);
+      position: relative;
+      left: calc(50% - 12.5px);
+      top: 2px;
+    }
+
+  }
+
+  div.form-body {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    margin-top: 8px;
+
+    div.input-grp {
+      display: flex;
+      flex-direction: row;
+      border-radius: 4px;
+      align-items: center;
+      border: 1px solid color($borders, light);
+      padding: 8px 12px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+
+      span.input-grp-icon {
+        height: 18px;
+        padding-right: 8px;
+        border-right: 1px solid color($borders, light);
+      }
+
+      input.input-txt {
+        border: none;
+        width: 0;
+        flex: 1;
+        height: 18px;
+        margin-left: 8px;
+        font-size: 0.95rem;
+        font-weight: 300;
+        transition: color 0.3s ease-in-out;
+        border-right: 1px solid color($borders, light);
+
+        &:last-child {
+          border-right: none;
+        }
+
+        &::placeholder {
+          font-weight: 300;
+        }//::placeholder
+
+      }//input-txt
+    }//input-grp
+
+    button.btn {
+      align-self: center;
+      margin-top: 8px;
+    }
+  }//form-body
+}//form
+
+
+/***********
+** BUTTON **
+************/
+
+.btn {
+  border: none;
+  color: color($colors, dark);
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+
+  &.btn-clear {
+    background: transparent;
+    border-radius: 0px;
+  }
+
+  &.btn-icon {
+    display: flex;
+    align-items: center;
+  }
+  &.full {
+    width: 100%;
+  }
+
+  @each $name, $color in $buttons {
+    &.btn-#{$name} {
+      background: $color;
+      color: white;
+
+      &:hover {
+        background: darken($color, 10%);
+      }
+    }
+  }
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-12 { font-size: 12px; }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }

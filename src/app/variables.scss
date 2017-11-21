@@ -1,0 +1,49 @@
+$text-color: #3b3b3b;
+
+$colors: (
+  primary: #11998e,
+  secondary: #38ef7d,
+  dark: #4e4e4e,
+  light: #ffffff,
+  disabled: #eee
+);
+
+$borders: (
+  light: #dedede
+);
+
+$segments: map-get($colors, primary) #23c086 map-get($colors, secondary);
+
+$buttons: (
+primary: map-get($colors, primary),
+secondary: map-get($colors, secondary),
+);
+
+//MIXINS
+/// Mixin printing a linear-gradient
+/// as well as a plain color fallback
+/// and the `-webkit-` prefixed declaration
+/// @access public
+/// @param {Keyword | Angle} $direction - Linear gradient direction
+/// @param {Arglist} $color-stops - List of color-stops composing the gradient
+@mixin linear-gradient($direction, $color-stops...) {
+  // Direction has been omitted and happens to be a color-stop
+
+  background: nth($color-stops, 1);
+  background: -webkit-linear-gradient($direction, $color-stops);
+  background: -o-linear-gradient($direction, $color-stops);
+  background: -moz-linear-gradient($direction, $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+/// Mixin for elevation
+/// @access public
+/// @param {Number} $distance - Distance from ground
+@mixin elevation($distance) {
+  box-shadow: 0px 0px (2.5 * $distance) rgba(0,0,0,0.3), $distance $distance (2.5 * $distance) rgba(0,0,0,0.3);
+}
+
+//FUNCTIONS
+@function color($map, $key) {
+  @return map-get($map, $key);
+}

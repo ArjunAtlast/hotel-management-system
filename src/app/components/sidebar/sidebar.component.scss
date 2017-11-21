@@ -1,0 +1,155 @@
+@import "../../variables.scss";
+
+$nav-item-size: 40px;
+
+.sidebar {
+  min-height: 100%;
+  overflow-y: auto;
+  width: 30%;
+  min-width: 250px;
+  max-width: 300px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  @include linear-gradient(-45deg, color($colors, secondary), color($colors, primary));
+
+  .title-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 56px;
+    padding: 16px;
+    box-sizing: border-box;
+    background: color($colors, light);
+    font-size: 1.8rem;
+    color: color($colors, primary);
+    font-weight: 100;
+    border-right: 1px solid color($borders, light);
+    @include elevation(1px);
+
+    .brand {
+      height: 25px;
+      width: 25px;
+      margin-right: 16px;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .text {
+      strong {
+  //      color: color($colors, secondary);
+        font-weight: 600;
+      }
+    }
+
+  }
+
+  .sidebar-content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 8px;
+
+    .account-details {
+      display: flex;
+      flex-direction: column;
+      height: 150px;
+
+      .user-details {
+        padding:16px;
+        width: 100%;
+        box-sizing: border-box;
+        color: color($colors, light);
+
+        .user-name {
+          font-size: 2rem;
+          font-weight: 300;
+        }
+        .user-un {
+          display: inline-flex;
+          align-items: center;
+          background: color($colors, light);
+          color: color($colors, primary);
+          border-radius: 50rem;
+          padding: 2px;
+          margin-top: 4px;
+
+          .material-icons {
+            margin-right: 8px;
+          }
+
+          .text {
+            padding-right: 8px;
+            padding-right: 4px;
+            //text-transform: uppercase;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .navigation {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      background: color($colors, light);
+      border-radius: 4px;
+      padding: 0;
+      overflow: hidden;
+      z-index: 2;
+      @include elevation(1px);
+
+      a.nav-link {
+        display: flex;
+        align-items: center;
+        height: $nav-item-size;
+        border-bottom: 1px solid color($borders, light);
+        box-sizing: border-box;
+        width: 100%;
+        color: color($colors, dark);
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.5s ease-in-out, color 1s ease-in-out;
+
+        &:hover, &.active {
+          background: darken(color($colors, light), 5%);
+          color: color($colors, primary);
+
+          .nav-icon {
+            .material-icons {
+              animation: flipInY 1s ease-in-out;
+            }
+          }
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .nav-icon {
+          display: flex;
+          height: $nav-item-size;
+          width: $nav-item-size;
+          .material-icons {
+            margin: auto;
+            //opacity: 0.8;
+          }
+        }
+
+        .nav-text {
+          width: 0;
+          flex: 1;
+          text-align: center;
+          padding-right: $nav-item-size;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+
+}

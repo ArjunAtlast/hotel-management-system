@@ -1,0 +1,197 @@
+@import "../../variables.scss";
+
+.date-picker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  padding-top: 0px;
+  cursor: pointer;
+
+  .date-picker-day {
+    font-size: 4rem;
+    padding: 4px;
+    font-weight: 300;
+    color: color($colors, primary);
+  }
+
+  .date-picker-my {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: color($colors, dark);
+
+    .date-picker-month {
+      padding: 4px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .date-picker-year {
+      padding: 4px;
+      font-weight: 300;
+    }
+  }
+}
+
+.model-date-picker {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  //display: flex;
+  background: rgba(0,0,0,0.5);
+
+  &.open {
+    display: flex;
+    .model-date-picker-content {
+      animation: bounceInUp 0.5s;
+    }
+  }
+
+  .model-date-picker-content {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 85%;
+    background: color($colors, light);
+    margin: auto;
+    border-radius: 4px;
+    min-width: 300px;
+    overflow: hidden;
+    z-index: 105;
+
+    .model-date-picker-header {
+      width: 100%;
+      background: color($colors, primary);
+
+      .model-date-picker-year, .model-date-picker-month {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button.btn-control {
+          border-radius: 50rem;
+          padding: 8px;
+          width: 40px;
+          height: 40px;
+        }
+
+        input.input-txt, input.input-number {
+          background: transparent;
+          color: color($colors, light);
+          border: none;
+          text-align: center;
+          font-size: 1rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          opacity: 0.9;
+
+          &:focus {
+            opacity: 1;
+          }
+        }
+
+        input.input-number::-webkit-inner-spin-button,
+        input.input-number::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          margin: 0;
+        }
+      }
+
+
+    }
+
+    .model-date-picker-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .model-date-picker-day-heads {
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        align-items: center;
+        border-bottom: 0.5px solid color($borders, light);
+
+        .model-date-picker-days {
+          width: 0;
+          flex: 1;
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: 0.8rem;
+          text-align: center;
+
+          &:first-child {
+            color: color($colors, primary);
+          }
+        }
+      }
+
+      .model-date-picker-dates {
+        display: grid;
+        width: 100%;
+        flex: 1;
+        grid-template-columns: repeat(7, 14.2857% [col-dates]);
+        grid-template-rows: repeat(6, 1fr);
+        background: color($colors, disabled);
+
+        .model-date-picker-date {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 300;
+          font-size: 1.5rem;
+          padding: 16px;
+          box-sizing: border-box;
+          border: none;
+          cursor: pointer;
+          border-bottom: 0.5px solid color($borders, light);
+          border-right: 0.5px solid color($borders, light);
+          background: color($colors, light);
+
+          &:nth-child(7n) {
+            border-right: none;
+          }
+
+          &.null {
+            background: color($colors, disabled);
+          }
+
+          &.active {
+            background: color($colors, primary);
+            color: color($colors, light);
+            animation: bounceIn 0.5s;
+          }
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        .model-date-picker-dates {
+          .model-date-picker-date {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .model-date-picker-footer {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    justify-content: flex-end;
+    border-top: 0.5px solid color($borders, light);
+  }
+}

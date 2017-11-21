@@ -1,0 +1,46 @@
+@import "../../variables.scss";
+
+
+div.register-page{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  color: $text-color;
+
+  div.card {
+    width: 80%;
+    border-radius: 4px;
+    background: white;
+    z-index: 2;
+    overflow: hidden;
+    margin: auto;
+
+    div.card-header {
+      height: 35vh;
+      min-height: 100px;
+      display: flex;
+      @include linear-gradient(-45deg, color($colors, primary), color($colors, secondary));
+
+      .header-image {
+        margin: auto;
+        width: 10vh;
+        min-width: 50px;
+        opacity: 0.7;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      
+    }
+
+    div.card-body {
+      padding: 5%;
+      form.register-form {
+        margin-top: -10%;
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+<div class="book-room-page">
+  <form class="book-room-form">
+
+    <!-- Guest Name -->
+    <div class="input-grp pad">
+      <span class="icon">
+        <i class="material-icons md-18">perm_identity</i>
+      </span>
+      <input type="name" class="input-txt" placeholder="Name*" required>
+    </div>
+
+    <!-- Guest Address -->
+    <div class="input-grp pad align-start">
+      <span class="icon">
+        <i class="material-icons md-18">place</i>
+      </span>
+      <textarea class="input-txt" placeholder="Address*" required></textarea>
+    </div>
+
+    <!-- Guest Phone Number -->
+    <div class="input-grp pad">
+      <span class="icon">
+        <i class="material-icons md-18">phone_iphone</i>
+      </span>
+      <input type="text" class="input-txt" placeholder="Phone Number">
+    </div>
+
+    <!-- Room Type -->
+    <!-- <div class="input-grp pad">
+      <span class="icon">
+        <i class="material-icons md-18">widgets</i>
+      </span>
+      <input type="text" class="input-txt" placeholder="Room Type">
+    </div> -->
+
+    <!-- Check-In Date -->
+    <div class="input-grp">
+      <div class="input-set">
+        <label for="check-in-date">
+          <span class="set-icon">
+            <i class="material-icons md-18">date_range</i>
+          </span>
+          <span class="text">Check-In Date</span>
+        </label>
+        <app-date-picker name="cid" [(ngModel)]="checkInDate"></app-date-picker>
+      </div>
+    </div>
+
+    <div class="input-grp pad justify-center">
+      <button class="btn btn-primary">BOOK ROOM</button>
+    </div>
+
+  </form>
+</div>

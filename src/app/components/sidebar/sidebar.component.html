@@ -1,0 +1,29 @@
+<div class="sidebar">
+  <div class="title-bar">
+    <span class="brand">
+      <img src="assets/icon.svg">
+    </span>
+    <span class="text">
+      <strong>HMS</strong>2017
+    </span>
+  </div>
+
+  <div class="sidebar-content">
+    <div class="account-details">
+      <div class="user-details" *ngIf="user">
+        <div class="user-name">{{user.First_name}} {{user.Last_name}}</div>
+        <div class="user-un">
+          <i class="material-icons md-18">account_circle</i>
+          <span class="text">{{user.Username}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="navigation">
+        <a [routerLink]="item.link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+true}" class="nav-link" *ngFor="let item of navItems">
+          <span class="nav-icon"><i class="material-icons md-18">{{item.icon}}</i></span>
+          <span class="nav-text">{{item.text}}</span>
+        </a>
+    </div>
+  </div>
+</div>

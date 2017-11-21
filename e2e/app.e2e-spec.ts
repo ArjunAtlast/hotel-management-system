@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('hotel-management-system App', () => {
+describe('nss-ptib App', () => {
   let page: AppPage;
 
   beforeEach(() => {

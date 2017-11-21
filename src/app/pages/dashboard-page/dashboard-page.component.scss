@@ -1,0 +1,31 @@
+@import "../../variables.scss";
+
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 0px;
+  background: #eee;
+  .content-wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0px;
+    overflow: hidden;
+    z-index: 2;
+    background: color($colors, light);
+
+    .nav-outlet {
+      flex: 1;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .wrapper {
+    padding: 0px;
+  }
+}
