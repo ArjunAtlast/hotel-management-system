@@ -11,7 +11,7 @@ export class DashboardPageComponent implements OnInit {
   navItems: any[] = [
     { icon: 'dashboard', text: 'Dashboard', link: '/dashboard' },
     { icon: 'hotel', text: 'Book Room', link: '/dashboard/book-room' },
-    { icon: 'restaurant', text: 'Order Food', link: '/dashboard/place-order' },
+    { icon: 'restaurant', text: 'Place Order', link: '/dashboard/place-order' },
     { icon: 'local_bar', text: 'Use Facility', link: '#'}
   ];
 

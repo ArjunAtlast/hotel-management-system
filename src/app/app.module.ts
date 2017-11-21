@@ -13,6 +13,7 @@ import { DashboardHomePageComponent } from './pages/dashboard-home-page/dashboar
 import { BookRoomPageComponent } from './pages/book-room-page/book-room-page.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { PlaceOrderPageComponent } from './pages/place-order-page/place-order-page.component';
+import { FoodItemComponent } from './components/food-item/food-item.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { PlaceOrderPageComponent } from './pages/place-order-page/place-order-pa
     BookRoomPageComponent,
     DatePickerComponent,
     PlaceOrderPageComponent,
+    FoodItemComponent,
   ],
   imports: [
     BrowserModule,
