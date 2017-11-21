@@ -3,6 +3,5 @@ export class User {
   Username: string;   //varchar
   First_name: string; //varchar
   Last_name: string;  //varchar
-  Password?: string;   //varchar
   //designation: string; //varchar
 }

@@ -12,7 +12,7 @@ export class DashboardPageComponent implements OnInit {
     { icon: 'dashboard', text: 'Dashboard', link: '/dashboard' },
     { icon: 'hotel', text: 'Book Room', link: '/dashboard/book-room' },
     { icon: 'restaurant', text: 'Place Order', link: '/dashboard/place-order' },
-    { icon: 'local_bar', text: 'Use Facility', link: '#'}
+    { icon: 'spa', text: 'Use Facility', link: '#'}
   ];
 
   c_user: User = {

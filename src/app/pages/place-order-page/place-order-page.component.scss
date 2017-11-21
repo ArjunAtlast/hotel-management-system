@@ -1,0 +1,29 @@
+@import "../../variables.scss";
+
+.place-order-page {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  div.food-grp {
+    h4.title {
+      font-size: 2rem;
+      text-transform: uppercase;
+      font-weight: 300;
+      padding: 16px;
+      border-bottom: 1px solid color($borders, light);
+      width: 100%;
+    }
+
+    div.horizontal-scroll {
+      padding: 16px;
+      background: color($colors, disabled);
+      display: flex;
+      
+    }
+
+  }
+
+}

@@ -5,6 +5,7 @@ import { DashboardPageComponent } from '../pages/dashboard-page/dashboard-page.c
 import { DashboardHomePageComponent } from '../pages/dashboard-home-page/dashboard-home-page.component';
 import { BookRoomPageComponent } from '../pages/book-room-page/book-room-page.component';
 import { PlaceOrderPageComponent } from '../pages/place-order-page/place-order-page.component';
+import { CompleteOrderComponent} from '../pages/complete-order/complete-order.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: DashboardHomePageComponent, data: { title: 'Dashboard | Home' }},
       { path: 'book-room', component: BookRoomPageComponent, data: { title: 'Book Room'}},
-      { path: 'place-order', component: PlaceOrderPageComponent, data: { title: 'Place Order'}}
+      { path: 'place-order', component: PlaceOrderPageComponent, data: { title: 'Place Order'}},
+      { path: 'complete-order/:id', component: CompleteOrderComponent, data: { title: 'Complete Order'}}
     ]
   }
 ];

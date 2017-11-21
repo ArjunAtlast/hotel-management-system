@@ -1,0 +1,41 @@
+@import "../../variables.scss";
+
+div.food-item {
+  margin: 0px 8px 0px 8px;
+  background: color($colors, light);
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 2;
+  display: block;
+  @include elevation(1px);
+
+  span.food-item-name {
+    display: block;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 100;
+    padding: 8px 12px;
+    color: color($colors, dark);
+  }
+
+  div.food-item-rate {
+    display: flex;
+    padding: 16px;
+    .icon {
+      margin-right: 16px;
+      color: color($colors, primary);
+    }
+    .text {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: color($colors, dark);
+    }
+  }
+
+  div.food-item-footer {
+    padding: 8px 12px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid color($borders, light);
+  }
+}

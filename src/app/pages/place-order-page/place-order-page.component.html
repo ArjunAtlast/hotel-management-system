@@ -3,9 +3,7 @@
   <div class="food-grp">
     <h4 class="title">Breakfast</h4>
     <div class="horizontal-scroll">
-
-      <app-food-item></app-food-item>
-
+      <app-food-item [value]="food" *ngFor="let food of foods"></app-food-item>
     </div>
   </div>
   <!-- Lunch -->
