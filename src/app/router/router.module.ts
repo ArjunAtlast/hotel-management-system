@@ -6,6 +6,7 @@ import { DashboardHomePageComponent } from '../pages/dashboard-home-page/dashboa
 import { BookRoomPageComponent } from '../pages/book-room-page/book-room-page.component';
 import { PlaceOrderPageComponent } from '../pages/place-order-page/place-order-page.component';
 import { CompleteOrderComponent} from '../pages/complete-order/complete-order.component';
+import { UseFacilityPageComponent } from '../pages/use-facility-page/use-facility-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const appRoutes: Routes = [
       { path: '', component: DashboardHomePageComponent, data: { title: 'Dashboard | Home' }},
       { path: 'book-room', component: BookRoomPageComponent, data: { title: 'Book Room'}},
       { path: 'place-order', component: PlaceOrderPageComponent, data: { title: 'Place Order'}},
-      { path: 'complete-order/:id', component: CompleteOrderComponent, data: { title: 'Complete Order'}}
+      { path: 'complete-order/:id', component: CompleteOrderComponent, data: { title: 'Complete Order'}},
+      { path: 'use-facility', component: UseFacilityPageComponent, data: { title: 'Use Facility'}}
     ]
   }
 ];

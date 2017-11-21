@@ -1,0 +1,49 @@
+@import "../../variables.scss";
+
+div.card-order {
+  display: block;
+  background: color($colors, light);
+  @include elevation(0.5px);
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 2;
+  margin: 8px;
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 12px;
+    border-bottom: 1px solid color($borders, light);
+    align-items: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    span.item-highlight {
+      font-weight: 100;
+      font-size: 1.2rem;
+      color: color($colors, primary);
+    }
+
+    span.item-label {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 1rem;
+      color: color($colors, dark);
+
+      i.material-icons {
+        margin-right: 12px;
+      }
+    }
+
+    span.item-value {
+      font-weight: 300;
+      font-size: 1rem;
+      color: color($colors, dark);
+    }
+  }
+}

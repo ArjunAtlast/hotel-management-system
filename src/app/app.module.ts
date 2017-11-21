@@ -15,6 +15,8 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
 import { PlaceOrderPageComponent } from './pages/place-order-page/place-order-page.component';
 import { FoodItemComponent } from './components/food-item/food-item.component';
 import { CompleteOrderComponent } from './pages/complete-order/complete-order.component';
+import { UseFacilityPageComponent } from './pages/use-facility-page/use-facility-page.component';
+import { OrderComponent } from './components/order/order.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { CompleteOrderComponent } from './pages/complete-order/complete-order.co
     PlaceOrderPageComponent,
     FoodItemComponent,
     CompleteOrderComponent,
+    UseFacilityPageComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

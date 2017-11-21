@@ -1,8 +1,38 @@
+<form class="input-form">
+  <div class="input-grp pad flex1">
+    <span class="icon">
+      <i class="material-icons md-18">perm_identity</i>
+    </span>
+    <input type="text" class="input-txt" placeholder="Guest Id*" required>
+  </div>
+
+  <div class="input-grp pad justify-center">
+    <button class="btn btn-primary">Search</button>
+  </div>
+</form>
+
+
 <div class="section-vert">
   <div class="segment">
     <div class="segment-title">
-      <i class="material-icons">book</i>
-      <h4>BOOKINGS</h4>
+      <i class="material-icons">spa</i>
+      <h4>FACILITIES</h4>
+    </div>
+    <div class="segment-body no-pad">
+      <div class="segment-body-scroll">
+        <div class="segment-body-item head">
+          <div class="item-set">Type</div>
+          <div class="item-set">Rate</div>
+        </div>
+        <!-- Facilities Loaded -->
+
+        <div class="segment-body-item" *ngFor="let facility of facilities">
+          <div class="item-set">{{facility.Type}}</div>
+          <div class="item-set">{{facility.Rate}}</div>
+        </div>
+      </div>
+
+      <!--  -->
     </div>
   </div>
   <div class="segment">
@@ -10,11 +40,81 @@
       <i class="material-icons">restaurant_menu</i>
       <h4>ORDERS</h4>
     </div>
+    <div class="segment-body">
+      <app-order [value]="order" *ngFor="let order of orders"></app-order>
+    </div>
   </div>
   <div class="segment">
     <div class="segment-title">
       <i class="material-icons">person</i>
       <h4>PROFILE</h4>
+    </div>
+
+    <div class="segment-body">
+
+      <!-- Profile -->
+      <div class="segment-body-scroll">
+        <div class="profile-card">
+
+          <div class="data-grp">
+
+            <div class="data-set">
+              <label>
+                <span class="set-icon">
+                  <i class="material-icons md-18">bookmark_border</i>
+                </span>
+                <span class="text">{{guest.Guest_id}}</span>
+              </label>
+            </div>
+
+          </div>
+
+          <div class="data-grp">
+
+            <div class="data-set">
+              <label>
+                <span class="set-icon">
+                  <i class="material-icons md-18">perm_identity</i>
+                </span>
+                <span class="text">{{guest.Guest_name}}</span>
+              </label>
+            </div>
+
+          </div>
+
+          <div class="data-grp">
+
+            <div class="data-set">
+              <label>
+                <span class="set-icon">
+                  <i class="material-icons md-18">place</i>
+                </span>
+                <span class="text">{{guest.Guest_address}}</span>
+              </label>
+            </div>
+
+          </div>
+
+          <div class="data-grp">
+
+            <div class="data-set">
+              <label>
+                <span class="set-icon">
+                  <i class="material-icons md-18">phone_iphone</i>
+                </span>
+                <span class="text">{{guest.Guest_phone_no}}</span>
+              </label>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Profile  -->
+      <!--  -->
+      <button class="btn btn-primary">Check Out</button>
+
     </div>
   </div>
 </div>

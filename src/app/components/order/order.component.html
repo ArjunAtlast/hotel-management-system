@@ -1,0 +1,26 @@
+<div class="card-order">
+  <div class="item">
+    <span class="item-highlight">{{order.Type}}({{order.Name}})</span>
+  </div>
+  <div class="item">
+    <span class="item-label">
+      <i class="material-icons md-18">style</i>
+      Rate
+    </span>
+    <span class="item-value">{{order.Rate | currency : 'INR'}}</span>
+  </div>
+  <div class="item">
+    <span class="item-label">
+      <i class="material-icons md-18">layers</i>
+      Quantity
+    </span>
+    <span class="item-value">{{order.Quantity}}</span>
+  </div>
+  <div class="item">
+    <span class="item-label">
+      <i class="material-icons md-18">attach_money</i>
+      Total
+    </span>
+    <span class="item-value">{{(order.Quantity * order.Rate) | currency : 'INR'}}</span>
+  </div>
+</div>
