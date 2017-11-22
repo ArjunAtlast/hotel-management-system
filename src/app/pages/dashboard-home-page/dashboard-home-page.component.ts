@@ -4,6 +4,7 @@ import { Guest } from '../../api/guest';
 import { FacilityServiceService } from '../../services/facility-service.service';
 import { PlaceOrderService } from '../../services/place-order.service';
 import { BookingService } from '../../services/booking.service';
+import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,6 +25,7 @@ export class DashboardHomePageComponent implements OnInit {
     private facility: FacilityServiceService,
     private order: PlaceOrderService,
     private booking: BookingService,
+    private session: SessionService,
     private router: Router
   ) { }
 
@@ -51,7 +53,7 @@ export class DashboardHomePageComponent implements OnInit {
     this.booking.getUserDetails(this.guest_id).then((data) => {
       this.guest = data;
       this.getUserOrders();
-      this.getUserDetails();
+      this.getUserFacilities();
     }).catch(error => {
       console.log(error);
     });
@@ -59,9 +61,12 @@ export class DashboardHomePageComponent implements OnInit {
 
   checkOutGuest() {
     this.booking.checkout(this.guest.Guest_id).then((data) => {
-      this.router.navigate(['dashboard', 'bill-page', data]);
+      this.session.setItem("bill", data[0]);
+      this.session.setItem("guest", this.guest);
+      this.router.navigate(['dashboard', 'bill-page']);
     }).catch(error => {
       alert("Failed");
+      console.log(error);
     });
   }
 

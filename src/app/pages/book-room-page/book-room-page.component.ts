@@ -27,7 +27,7 @@ export class BookRoomPageComponent implements OnInit {
     if(this.isValid) {
 
       this.book.bookRoom(this.booking).then((data) => {
-        console.log(data);
+        alert("Success");
       }).catch(error => {
         console.log(error);
       });

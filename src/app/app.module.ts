@@ -22,6 +22,7 @@ import { AuthService } from './services/auth.service';
 import { BookingService } from './services/booking.service';
 import { PlaceOrderService } from './services/place-order.service';
 import { FacilityServiceService } from './services/facility-service.service';
+import { SessionService } from './services/session.service';
 
 import { AuthGuard } from './guards/auth.guard';
 import { BillPageComponent } from './pages/bill-page/bill-page.component';
@@ -53,6 +54,7 @@ import { BillPageComponent } from './pages/bill-page/bill-page.component';
     AuthService,
     BookingService,
     FacilityServiceService,
+    SessionService,
     AuthGuard,
     PlaceOrderService
   ],

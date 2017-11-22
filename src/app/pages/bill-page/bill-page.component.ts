@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-bill-page',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillPageComponent implements OnInit {
 
-  constructor() { }
+  bill: any;
+  guest: any;
+  constructor(private session: SessionService) { }
 
   ngOnInit() {
+    this.bill = this.session.getItem('bill');
+    console.log(this.bill);
+    this.guest = this.session.getItem('guest');
   }
 
 }
