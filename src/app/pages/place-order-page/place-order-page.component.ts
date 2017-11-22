@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Food } from '../../api/food';
 
+import { PlaceOrderService } from '../../services/place-order.service';
+
 @Component({
   selector: 'app-place-order-page',
   templateUrl: './place-order-page.component.html',
@@ -8,30 +10,26 @@ import { Food } from '../../api/food';
 })
 export class PlaceOrderPageComponent implements OnInit {
 
-  foods: Food[] = [
-    {
-      Food_item_id: 1,
-      Name: 'Regular',
-      Rate: 120,
-      Type: 'BRK'
-    },
-    {
-      Food_item_id: 2,
-      Name: 'Medium',
-      Rate: 240,
-      Type: 'BRK'
-    },
-    {
-      Food_item_id: 3,
-      Name: 'Large',
-      Rate: 350,
-      Type: 'BRK'
-    },
-  ];
+  foodTypes: any[] = [];
 
-  constructor() { }
+  constructor(private order: PlaceOrderService) { }
 
   ngOnInit() {
+    this.getFoods();
+  }
+
+  getFoods() {
+    this.order.findFoods().then((data) => {
+      this.foodTypes = data;
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  expandType(type: string): string {
+    const FOOD_TYPES = {'BRK': 'Breakfast', 'LUN': 'Lunch', 'DIN': 'Dinner'};
+
+    return FOOD_TYPES[type];
   }
 
 }

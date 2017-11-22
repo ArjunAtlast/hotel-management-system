@@ -1,12 +1,12 @@
 <div class="book-room-page">
-  <form class="book-room-form">
+  <form class="book-room-form" (submit)="bookRoom()">
 
     <!-- Guest Name -->
     <div class="input-grp pad">
       <span class="icon">
         <i class="material-icons md-18">perm_identity</i>
       </span>
-      <input type="name" class="input-txt" placeholder="Name*" required>
+      <input type="name" name="name" [(ngModel)]="booking.guest_name" class="input-txt" placeholder="Name*" required>
     </div>
 
     <!-- Guest Address -->
@@ -14,7 +14,7 @@
       <span class="icon">
         <i class="material-icons md-18">place</i>
       </span>
-      <textarea class="input-txt" placeholder="Address*" required></textarea>
+      <textarea class="input-txt" name="address" [(ngModel)]="booking.guest_address" placeholder="Address*" required></textarea>
     </div>
 
     <!-- Guest Phone Number -->
@@ -22,7 +22,7 @@
       <span class="icon">
         <i class="material-icons md-18">phone_iphone</i>
       </span>
-      <input type="text" class="input-txt" placeholder="Phone Number">
+      <input type="text" name="phno" [(ngModel)]="booking.guest_phno" class="input-txt" placeholder="Phone Number">
     </div>
 
     <!-- Room Type -->
@@ -42,12 +42,12 @@
           </span>
           <span class="text">Check-In Date</span>
         </label>
-        <app-date-picker name="cid" [(ngModel)]="checkInDate"></app-date-picker>
+        <app-date-picker name="cid" [(ngModel)]="booking.check_in_date"></app-date-picker>
       </div>
     </div>
 
     <div class="input-grp pad justify-center">
-      <button class="btn btn-primary">BOOK ROOM</button>
+      <button class="btn btn-primary" [disabled]="!isValid">BOOK ROOM</button>
     </div>
 
   </form>

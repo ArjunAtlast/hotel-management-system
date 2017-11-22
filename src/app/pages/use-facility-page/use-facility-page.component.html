@@ -1,19 +1,19 @@
 <div class="section-vert">
   <div class="segment" *ngFor = "let facility of facilities">
     <div class="segment-title">
-      <i class="material-icons">{{facility.icon}}</i>
+      <i class="material-icons">{{getIcon(facility.Type)}}</i>
       <h4>{{facility.Type}}</h4>
     </div>
     <div class="segment-body">
 
 
-      <form class="use-facility-form">
+      <form class="use-facility-form" (submit)="useFacility(facility.Facility_id)">
         <!-- Guest Name -->
         <div class="input-grp pad flex3">
           <span class="icon">
             <i class="material-icons md-18">perm_identity</i>
           </span>
-          <input type="text" class="input-txt" placeholder="Guest Id*" required>
+          <input type="text" name="guest_id" [(ngModel)]="guest_id" class="input-txt" placeholder="Guest Id*" required>
         </div>
 
         <div class="input-grp pad justify-center">

@@ -6,17 +6,17 @@
       </div>
     </div>
     <div class="card-body">
-      <form class="custom-form login-form animated slideInUp" action="#">
+      <form class="custom-form login-form animated slideInUp" (submit)="login()">
         <h4 class="form-heading">LOGIN</h4>
         <div class="form-body">
           <div class="input-grp">
             <span class="input-grp-icon"><i class="material-icons md-18">perm_identity</i></span>
-            <input type="text" class="input-txt" placeholder="Username" required>
+            <input type="text" name="username" [(ngModel)]="username" class="input-txt" placeholder="Username" required>
           </div>
 
           <div class="input-grp">
             <span class="input-grp-icon"><i class="material-icons md-18">lock_open</i></span>
-            <input type="password" class="input-txt" placeholder="Password" required>
+            <input type="password" name="password" [(ngModel)]="password" class="input-txt" placeholder="Password" required>
           </div>
 
           <button class="btn btn-primary">Login</button>

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Facility } from '../../api/facility';
 import { Guest } from '../../api/guest';
+import { FacilityServiceService } from '../../services/facility-service.service';
+import { PlaceOrderService } from '../../services/place-order.service';
+import { BookingService } from '../../services/booking.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-home-page',
@@ -9,54 +13,56 @@ import { Guest } from '../../api/guest';
 })
 export class DashboardHomePageComponent implements OnInit {
 
-  orders: any[] = [
-    {
-      Type: 'BRK',
-      Name: 'Regular',
-      Rate: 120,
-      Quantity: 5
-    },
-    {
-      Type: 'BRK',
-      Name: 'Regular',
-      Rate: 120,
-      Quantity: 5
-    }
-  ];
+  orders: any[];
+  guest_id: number;
 
-  facilities: Facility[] = [
-    {
-      Facility_id: 1,
-      Type: 'SPA',
-      Rate: 200
-    },
-    {
-      Facility_id: 1,
-      Type: 'SPA',
-      Rate: 200
-    },
-    {
-      Facility_id: 1,
-      Type: 'SPA',
-      Rate: 200
-    },
-    {
-      Facility_id: 1,
-      Type: 'SPA',
-      Rate: 200
-    }
-  ];
+  facilities: Facility[];
 
-  guest: Guest = {
-    Guest_id: 1,
-    Guest_name: 'Arjun',
-    Guest_address: 'Sandeep Sadan (h)\nKatampazhipuram (PO)\nPalakkad',
-    Guest_phone_no: '9567881757'
-  };
+  guest: Guest;
 
-  constructor() { }
+  constructor(
+    private facility: FacilityServiceService,
+    private order: PlaceOrderService,
+    private booking: BookingService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+
+  }
+
+  getUserFacilities() {
+    this.facility.getUserFacilities(this.guest.Guest_id).then((data: Facility[]) => {
+      this.facilities = data;
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  getUserOrders() {
+    this.order.getUserOrders(this.guest.Guest_id).then((data:any[])=> {
+      this.orders = data;
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  getUserDetails() {
+    this.booking.getUserDetails(this.guest_id).then((data) => {
+      this.guest = data;
+      this.getUserOrders();
+      this.getUserDetails();
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  checkOutGuest() {
+    this.booking.checkout(this.guest.Guest_id).then((data) => {
+      this.router.navigate(['dashboard', 'bill-page', data]);
+    }).catch(error => {
+      alert("Failed");
+    });
   }
 
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Booking } from '../../api/booking';
+
+import { BookingService } from '../../services/booking.service';
 
 @Component({
   selector: 'app-book-room-page',
@@ -7,14 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookRoomPageComponent implements OnInit {
 
-  checkInDate: any = new Date();
+  booking: Booking;
 
-  constructor() {
+
+  constructor(private book: BookingService) {
 
   }
 
   ngOnInit() {
+    this.booking = new Booking();
+    this.booking.check_in_date = new Date();
+  }
 
+  bookRoom() {
+    console.log(this.booking.guest_phno);
+    if(this.isValid) {
+
+      this.book.bookRoom(this.booking).then((data) => {
+        console.log(data);
+      }).catch(error => {
+        console.log(error);
+      });
+    }
+  }
+
+  get isValid(): boolean {
+    return (!!this.booking.guest_name && !!this.booking.guest_address && !!this.booking.guest_phno);
   }
 
 }

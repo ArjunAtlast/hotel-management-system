@@ -1,6 +1,7 @@
 <div class="card-order">
+  <div class="timestamp">{{order.Timestamp}}</div>
   <div class="item">
-    <span class="item-highlight">{{order.Type}}({{order.Name}})</span>
+    <span class="item-highlight">{{expandType(order.Type)}}({{order.Name}})</span>
   </div>
   <div class="item">
     <span class="item-label">

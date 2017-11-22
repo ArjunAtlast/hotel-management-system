@@ -12,4 +12,10 @@ export class OrderComponent {
 
   constructor() { }
 
+  expandType(type: string): string {
+    const FOOD_TYPES = {'BRK': 'Breakfast', 'LUN': 'Lunch', 'DIN': 'Dinner'};
+
+    return FOOD_TYPES[type];
+  }
+
 }

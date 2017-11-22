@@ -1,9 +1,9 @@
-<form class="input-form">
+<form class="input-form" (submit)="getUserDetails()">
   <div class="input-grp pad flex1">
     <span class="icon">
       <i class="material-icons md-18">perm_identity</i>
     </span>
-    <input type="text" class="input-txt" placeholder="Guest Id*" required>
+    <input type="text" name="guest_id" [(ngModel)]="guest_id" class="input-txt" placeholder="Guest Id*" required>
   </div>
 
   <div class="input-grp pad justify-center">
@@ -54,7 +54,7 @@
 
       <!-- Profile -->
       <div class="segment-body-scroll">
-        <div class="profile-card">
+        <div class="profile-card" *ngIf="guest">
 
           <div class="data-grp">
 
@@ -108,12 +108,15 @@
 
           </div>
 
+          <div class="data-grp pad">
+            <button class="btn btn-primary" (click)="checkOutGuest()">Check Out</button>
+          </div>
+
         </div>
       </div>
 
       <!-- Profile  -->
       <!--  -->
-      <button class="btn btn-primary">Check Out</button>
 
     </div>
   </div>

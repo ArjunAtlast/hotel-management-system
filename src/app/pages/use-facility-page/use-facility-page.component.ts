@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Facility } from '../../api/facility';
+import { FacilityServiceService} from '../../services/facility-service.service';
 
 @Component({
   selector: 'app-use-facility-page',
@@ -8,30 +9,36 @@ import { Facility } from '../../api/facility';
 })
 export class UseFacilityPageComponent implements OnInit {
 
-  facilities: Facility[] = [
-    {
-      Facility_id: 1,
-      Type: 'Pool',
-      Rate: 150,
-      icon: 'pool'
-    },
-    {
-      Facility_id: 2,
-      Type: 'Gym',
-      Rate: 200,
-      icon: 'fitness_center'
-    },
-    {
-      Facility_id: 3,
-      Type: 'Spa',
-      Rate: 300,
-      icon: 'spa'
-    },
-  ]
+  facilities: Facility[];
+  guest_id: number;
 
-  constructor() { }
+  constructor(private facility: FacilityServiceService) { }
 
   ngOnInit() {
+    this.getFacilities();
+  }
+
+  getIcon(type: string) {
+    const icons = {POOL: 'pool', GYM: 'fitness_center', SPA: 'spa'};
+
+    return icons[type];
+  }
+
+  getFacilities() {
+    this.facility.getFacilities().then((data:any[]) => {
+      this.facilities = data;
+    }).catch(error=> {
+      console.log(error);
+    });
+  }
+
+  useFacility(id: number) {
+    this.facility.useFacility(this.guest_id, id).then(()=> {
+      alert("Success");
+    }).catch(error => {
+      console.log(error);
+      alert("Failed");
+    });
   }
 
 }

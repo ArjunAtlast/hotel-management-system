@@ -1,30 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../api/user';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
 
-  constructor(private http: HttpClient) { }
+  username: string;
+  password: string;
+
+  constructor(private auth: AuthService, private router: Router) { }
 
   login(){
-    let formData = new FormData();
-    formData.append("name","Arjun");
-    formData.append("age", '15');
+    if(this.username !== undefined && this.password !== undefined) {
 
-    this.http.post('http://hotel-management-server.000webhostapp.com/index.php', formData).subscribe((data) => {
-      console.log(data);
-    }, (error) => {
-      console.error("Error", error);
-    });
-  }
-
-  ngOnInit() {
-    this.login();
+      this.auth.login(this.username, this.password).then((user: User) => {
+        this.router.navigate(['dashboard']);
+      }).catch(error => {
+        console.log(error);
+      });
+    }
+    else {
+      alert("Both username and password fields are required.");
+    }
   }
 
 }

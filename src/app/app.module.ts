@@ -18,6 +18,13 @@ import { CompleteOrderComponent } from './pages/complete-order/complete-order.co
 import { UseFacilityPageComponent } from './pages/use-facility-page/use-facility-page.component';
 import { OrderComponent } from './components/order/order.component';
 
+import { AuthService } from './services/auth.service';
+import { BookingService } from './services/booking.service';
+import { PlaceOrderService } from './services/place-order.service';
+import { FacilityServiceService } from './services/facility-service.service';
+
+import { AuthGuard } from './guards/auth.guard';
+import { BillPageComponent } from './pages/bill-page/bill-page.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +40,7 @@ import { OrderComponent } from './components/order/order.component';
     CompleteOrderComponent,
     UseFacilityPageComponent,
     OrderComponent,
+    BillPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +49,13 @@ import { OrderComponent } from './components/order/order.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    BookingService,
+    FacilityServiceService,
+    AuthGuard,
+    PlaceOrderService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

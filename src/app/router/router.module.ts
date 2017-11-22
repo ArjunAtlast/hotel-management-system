@@ -7,6 +7,9 @@ import { BookRoomPageComponent } from '../pages/book-room-page/book-room-page.co
 import { PlaceOrderPageComponent } from '../pages/place-order-page/place-order-page.component';
 import { CompleteOrderComponent} from '../pages/complete-order/complete-order.component';
 import { UseFacilityPageComponent } from '../pages/use-facility-page/use-facility-page.component';
+import { BillPageComponent } from '../pages/bill-page/bill-page.component';
+
+import { AuthGuard } from '../guards/auth.guard';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -15,15 +18,18 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     component: DashboardPageComponent,
+    //canActivate: [AuthGuard],
     data: { title: 'Dashboard' },
     children: [
       { path: '', component: DashboardHomePageComponent, data: { title: 'Dashboard | Home' }},
       { path: 'book-room', component: BookRoomPageComponent, data: { title: 'Book Room'}},
       { path: 'place-order', component: PlaceOrderPageComponent, data: { title: 'Place Order'}},
       { path: 'complete-order/:id', component: CompleteOrderComponent, data: { title: 'Complete Order'}},
-      { path: 'use-facility', component: UseFacilityPageComponent, data: { title: 'Use Facility'}}
+      { path: 'use-facility', component: UseFacilityPageComponent, data: { title: 'Use Facility'}},
+      { path: 'bill-page', component: BillPageComponent, data: { title: 'Bill'}}
     ]
-  }
+  },
+  //{ path: '**', redirectTo: '/login' },
 ];
 
 @NgModule({

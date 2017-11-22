@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PlaceOrderService } from '../../services/place-order.service';
+import { Food } from '../../api/food';
 
 @Component({
   selector: 'app-complete-order',
@@ -8,11 +10,40 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CompleteOrderComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  food: Food;
+  guest_id: number;
+  quantity: number;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private order: PlaceOrderService
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log(+params['id']);
+      this.getFood(+params['id']);
+    });
+  }
+
+  getFood(id: number) {
+    this.order.findFood(id).then(data => {
+      this.food = data;
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  expandType(type: string): string {
+    const FOOD_TYPES = {'BRK': 'Breakfast', 'LUN': 'Lunch', 'DIN': 'Dinner'};
+    return FOOD_TYPES[type];
+  }
+
+  completeOrder() {
+    this.order.orderFood(this.guest_id, this.food.Food_item_id, this.quantity).then(() => {
+      alert("Success");
+    }).catch(error => {
+      console.log(error);
     });
   }
 

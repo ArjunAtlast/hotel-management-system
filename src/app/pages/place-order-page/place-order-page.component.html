@@ -1,17 +1,17 @@
 <div class="place-order-page">
   <!-- Breakfast -->
-  <div class="food-grp">
-    <h4 class="title">Breakfast</h4>
+  <div class="food-grp" *ngFor="let foodType of foodTypes">
+    <h4 class="title">{{expandType(foodType.type)}}</h4>
     <div class="horizontal-scroll">
-      <app-food-item [value]="food" *ngFor="let food of foods"></app-food-item>
+      <app-food-item [value]="food" *ngFor="let food of foodType.foods"></app-food-item>
     </div>
   </div>
   <!-- Lunch -->
-  <div class="food-grp">
+  <!-- <div class="food-grp">
 
-  </div>
+  </div> -->
   <!-- Dinner -->
-  <div class="food-grp">
+  <!-- <div class="food-grp">
 
-  </div>
+  </div> -->
 </div>
